@@ -105,21 +105,15 @@ def move_uav2():
             relative_position.pose.position.y = recovery_position_1.pose.position.y + 1
             relative_position.pose.position.z = recovery_position_1.pose.position.z
             print("Timeout Recovery has activated: uav1 position is used")
-            rospy.logwarn("do I pass here?")
-            mission_land = True
-            rospy.loginfo("Connections with other vehicles are lost")
-            pub_land.publish(mission_land)
-            break
 
         elif uav3_alive:
             relative_position = PoseStamped()
             relative_position.pose.position.x = recovery_position_3.pose.position.x - 1
             relative_position.pose.position.y = recovery_position_3.pose.position.y
             relative_position.pose.position.z = recovery_position_3.pose.position.z
-            #print("Timeout Recovery has activated: uav3 position is used")
+            print("Timeout Recovery has activated: uav3 position is used")
 
         else:
-            rospy.logwarn("do I pass here?")
             mission_land = True
             rospy.loginfo("Connections with other vehicles are lost")
             pub_land.publish(mission_land)
