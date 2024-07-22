@@ -76,7 +76,7 @@ if __name__ == '__main__':
 
     # Subscriber to state topic
     rospy.Subscriber('/uav3/mavros/state', State, state_callback)
-    rospy.Subscriber('/mission_start', Bool, mission_start_callback)
+    rospy.Subscriber('/mission_start_3', Bool, mission_start_callback)
     rospy.Subscriber('/mission_land', Bool, mission_land_callback)
 
     # Ensure connection

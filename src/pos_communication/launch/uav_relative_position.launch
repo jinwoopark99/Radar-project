@@ -3,6 +3,7 @@
         <node pkg="pos_communication" type="uav0_command.py" name="uav0_command" output="screen"/>
     </group>
     <group ns="uav1">
+        <node pkg="pos_communication" type="alive_check1.py" name="uav1_signalcheck" output="screen"/>
         <node pkg="pos_communication" type="relative_position_1.py" name="uav1_position" output="screen"/>
     </group>
     <group ns="uav2">
@@ -11,6 +12,7 @@
         <node pkg="pos_communication" type="relative_position_2.py" name="uav2_position" output="screen"/>
     </group>
     <group ns="uav3">
+        <node pkg="pos_communication" type="alive_check3.py" name="uav3_signalcheck" output="screen"/>
         <node pkg="pos_communication" type="relative_position_3.py" name="uav3_position" output="screen"/>
     </group>
 </launch>

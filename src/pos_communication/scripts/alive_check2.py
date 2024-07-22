@@ -121,9 +121,9 @@ if __name__ == '__main__':
     #status_check_uav1.start()
     #status_check_uav3.start()
 
-    pub_0 = rospy.Publisher('/signal_check0', Bool, queue_size=10)
-    pub_1 = rospy.Publisher('/signal_check1', Bool, queue_size=10)
-    pub_3 = rospy.Publisher('/signal_check3', Bool, queue_size=10)
+    pub_0 = rospy.Publisher('/signal_check0-2', Bool, queue_size=10)
+    pub_1 = rospy.Publisher('/signal_check1-2', Bool, queue_size=10)
+    pub_3 = rospy.Publisher('/signal_check2-3', Bool, queue_size=10)
 
     rospy.Subscriber('/uav0/relay/setpoint_position/local', PoseStamped, uav0_time_check)
     rospy.Subscriber('/uav1/mavros/setpoint_position/local', PoseStamped, uav1_time_check)

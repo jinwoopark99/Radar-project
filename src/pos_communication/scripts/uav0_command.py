@@ -5,7 +5,7 @@ from std_msgs.msg import Bool
 
 
 current_position = PoseStamped()
-mission_start_pub = rospy.Publisher('/mission_start', Bool, queue_size=100)
+mission_start_pub = rospy.Publisher('/mission_start_0', Bool, queue_size=100)
 
 #drone follows the given trajectory
 def generate_trajectory():
@@ -74,7 +74,7 @@ def move_uav0():
         
 
 if __name__ == '__main__':
-    for i in range(1):
+    for i in range(5):
         try:
             move_uav0()
         except:
