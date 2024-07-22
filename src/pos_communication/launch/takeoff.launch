@@ -1,0 +1,23 @@
+<launch>
+    <!-- UAV0 Takeoff -->
+    <group ns="uav0">
+        <node pkg="pos_communication" type="takeoff_1.py" name="uav0_takeoff" output="screen"/>
+    </group>
+
+    <!-- UAV1 Takeoff -->
+    <group ns="uav1">
+        <node pkg="pos_communication" type="takeoff_2.py" name="uav1_takeoff" output="screen"/>
+    </group>
+    
+    <!-- UAV2 Takeoff -->
+    <group ns="uav2">
+        <node pkg="pos_communication" type="takeoff_3.py" name="uav2_takeoff" output="screen"/>
+    </group>
+    
+    <!-- UAV3 Takeoff -->
+    <group ns="uav3">
+        <node pkg="pos_communication" type="takeoff_4.py" name="uav3_takeoff" output="screen"/>
+    </group>
+    
+</launch>
+
