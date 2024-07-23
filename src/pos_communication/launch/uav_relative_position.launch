@@ -1,5 +1,6 @@
 <launch>
     <group ns="uav0">
+        <node pkg="pos_communication" type="alive_check0.py" name="uav0_signalcheck" output="screen"/>
         <node pkg="pos_communication" type="uav0_command.py" name="uav0_command" output="screen"/>
     </group>
     <group ns="uav1">
