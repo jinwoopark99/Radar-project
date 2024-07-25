@@ -5,16 +5,27 @@ from std_msgs.msg import Bool
 import tf
 import math
 
+current_position = PoseStamped()
 setpoint_position = PoseStamped()
 recovery_position_1 = PoseStamped()
 recovery_position_2 = PoseStamped()
 mission_start_pub = rospy.Publisher('/mission_start_3', Bool, queue_size=10)
+current_yaw = 0.0
 uav0_alive = True
 uav1_alive = True
 uav2_alive = True
 subscription_active = False
 mission_land = False
-MAX_MISSED_DURATION = 0.8
+
+def current_pose_callback(data):
+    global current_position, current_yaw
+    current_position = data
+    
+    orientation_q = current_position.pose.orientation
+    orientation_list = [orientation_q.x, orientation_q.y, orientation_q.z, orientation_q.w]
+
+    (roll, pitch, yaw) = tf.transformations.euler_from_quaternion(orientation_list)
+    current_yaw = yaw
 
 def uav0_setpoint_pose_callback(data):
     global setpoint_position
@@ -51,13 +62,14 @@ def calculate_transformed_position(x, y, z, yaw):
     return new_x, new_y, z
 
 def move_uav3():
-    global uav0_alive, uav1_alive, uav2_alive, mission_land
+    global uav0_alive, uav1_alive, uav2_alive, mission_land, current_yaw
     global setpoint_position, recovery_position_1, recovery_position_2
     rospy.init_node('uav3_command', anonymous=True)
 
     rospy.Subscriber('/uav0/mavros/setpoint_position/local', PoseStamped, uav0_setpoint_pose_callback)
     rospy.Subscriber('/uav1/mavros/setpoint_position/local', PoseStamped, uav1_setpoint_pose_callback)
     rospy.Subscriber('/uav2/mavros/setpoint_position/local', PoseStamped, uav2_setpoint_pose_callback)
+    rospy.Subscriber('/uav3/mavros/local_position/pose', PoseStamped, current_pose_callback)
     rospy.Subscriber('/signal_check0-3', Bool, uav0_alive_callback)
     rospy.Subscriber('/signal_check1-3', Bool, uav1_alive_callback)
     rospy.Subscriber('/signal_check2-3', Bool, uav2_alive_callback)
@@ -66,6 +78,7 @@ def move_uav3():
     
     pub = rospy.Publisher('/uav3/mavros/setpoint_position/local', PoseStamped, queue_size=10)
     pub_land = rospy.Publisher('/mission_land', Bool, queue_size=10)
+    pub_arrive = rospy.Publisher('/checkpoint_arrive_3', Bool, queue_size=10)
 
     rate = rospy.Rate(100)
     
@@ -131,12 +144,22 @@ def move_uav3():
             pub_land.publish(mission_land)
             break
         
+        pos_err_x = abs(relative_position.pose.position.x - current_position.pose.position.x)
+        pos_err_y = abs(relative_position.pose.position.y - current_position.pose.position.y)
+        pos_err_z = abs(relative_position.pose.position.z - current_position.pose.position.z)
+        pos_err_yaw = abs(yaw - current_yaw)
+
+        if (pos_err_x < 0.1 and pos_err_y < 0.1 and pos_err_z < 0.1 and pos_err_yaw < 0.1):
+            pub_arrive.publish(True)
+        else:
+            pub_arrive.publish(False)
+
         if mission_land == True:
             break
             
         pub.publish(relative_position)
         mission_start_pub.publish(True)
-        print("Publishing relative position for uav3: ({}, {}, {})".format(relative_position.pose.position.x, relative_position.pose.position.y, relative_position.pose.position.z))
+        #print("Publishing relative position for uav3: ({}, {}, {})".format(relative_position.pose.position.x, relative_position.pose.position.y, relative_position.pose.position.z))
         rate.sleep()
 
 

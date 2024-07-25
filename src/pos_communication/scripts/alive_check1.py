@@ -9,7 +9,7 @@ check_heartbeat_3 = True
 last_msg_time_0 = None
 last_msg_time_2 = None
 last_msg_time_3 = None
-MAX_MISSED_DURATION = 0.8
+MAX_MISSED_DURATION = 0.2
 
 def uav0_time_check(data):
     global last_msg_time_0
@@ -33,7 +33,7 @@ def check_uav_alive():
         # Check UAV0
         if last_msg_time_0 and (current_time - last_msg_time_0 > MAX_MISSED_DURATION):
             check_heartbeat_0 = False
-            rospy.loginfo("Communication signal with uav0 lost")
+            #rospy.loginfo("Communication signal with uav0 lost")
         else:
             check_heartbeat_0 = True
         pub_0.publish(check_heartbeat_0)
@@ -41,7 +41,7 @@ def check_uav_alive():
         # Check UAV2
         if last_msg_time_2 and (current_time - last_msg_time_2 > MAX_MISSED_DURATION):
             check_heartbeat_2 = False
-            rospy.loginfo("Communication signal with uav2 lost")
+            #rospy.loginfo("Communication signal with uav2 lost")
         else:
             check_heartbeat_2 = True
         pub_2.publish(check_heartbeat_2)
@@ -49,7 +49,7 @@ def check_uav_alive():
         # Check UAV3
         if last_msg_time_3 and (current_time - last_msg_time_3 > MAX_MISSED_DURATION):
             check_heartbeat_3 = False
-            rospy.loginfo("Communication signal with uav3 lost")
+            #rospy.loginfo("Communication signal with uav3 lost")
         else:
             check_heartbeat_3 = True
         pub_3.publish(check_heartbeat_3)
