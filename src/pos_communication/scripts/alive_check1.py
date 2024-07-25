@@ -54,6 +54,9 @@ def check_uav_alive():
             check_heartbeat_3 = True
         pub_3.publish(check_heartbeat_3)
 
+        #Check position
+
+
         rate.sleep()
 
 

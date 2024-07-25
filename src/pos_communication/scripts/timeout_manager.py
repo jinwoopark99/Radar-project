@@ -20,7 +20,7 @@ class RelayNode:
         while not rospy.is_shutdown():
             # 랜덤 시간 동안 대기 (5초에서 15초 사이)
             random_wait = random.uniform(0, 5)
-            random_timeout = random.uniform(0, 5)
+            random_timeout = random.uniform(5, 15)
             rospy.sleep(random_wait)
             
             # 릴레이 중단 (10초 동안)

@@ -14,6 +14,7 @@ current_yaw = 0.0
 uav0_alive = True
 uav2_alive = True
 uav3_alive = True
+uav2_deviation = False
 subscription_active = False
 mission_land = False
 
@@ -39,6 +40,10 @@ def uav3_setpoint_pose_callback(data):
     global recovery_position_3
     recovery_position_3 = data
 
+def uav2_deviation_callback(data):
+    global uav2_deviation
+    uav2_deviation = data.data
+
 def uav0_alive_callback(data):
     global uav0_alive
     uav0_alive = data.data
@@ -62,14 +67,15 @@ def calculate_transformed_position(x, y, z, yaw):
     return new_x, new_y, z
 
 def move_uav1():
-    global uav0_alive, uav2_alive, uav3_alive, mission_land, current_yaw
-    global setpoint_position, recovery_position_2, recovery_position_3
+    global uav0_alive, uav2_alive, uav3_alive, mission_land, uav2_deviation
+    global current_position, current_yaw, setpoint_position, recovery_position_2, recovery_position_3
     rospy.init_node('uav1_command', anonymous=True)
 
     rospy.Subscriber('/uav0/mavros/setpoint_position/local', PoseStamped, uav0_setpoint_pose_callback)
     rospy.Subscriber('/uav2/mavros/setpoint_position/local', PoseStamped, uav2_setpoint_pose_callback)
     rospy.Subscriber('/uav3/mavros/setpoint_position/local', PoseStamped, uav3_setpoint_pose_callback)
     rospy.Subscriber('/uav1/mavros/local_position/pose', PoseStamped, current_pose_callback)
+    rospy.Subscriber('/uav2_deviation', Bool, uav2_deviation_callback)
     rospy.Subscriber('/signal_check0-1', Bool, uav0_alive_callback)
     rospy.Subscriber('/signal_check1-2', Bool, uav2_alive_callback)
     rospy.Subscriber('/signal_check1-3', Bool, uav3_alive_callback)
@@ -82,7 +88,15 @@ def move_uav1():
     rate = rospy.Rate(100)
     
     while not rospy.is_shutdown():
-            
+        if (uav2_deviation == True):
+            relative_position = current_position
+            pub.publish(relative_position)
+            print("deviation sent complete")
+            rate.sleep()
+            if(mission_land == True):
+                pub_land.publish(mission_land)
+                break
+            continue
         if uav0_alive:
             yaw = tf.transformations.euler_from_quaternion([
                 setpoint_position.pose.orientation.x,
