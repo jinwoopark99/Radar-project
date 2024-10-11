@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libdata_validator.a  CMakeFiles/data_validator.dir/DataValidator.cpp.o CMakeFiles/data_validator.dir/DataValidatorGroup.cpp.o
+/usr/bin/ranlib /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libdata_validator.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libuORB.a  CMakeFiles/uORB.dir/Subscription.cpp.o CMakeFiles/uORB.dir/uORB.cpp.o CMakeFiles/uORB.dir/uORBDeviceMaster.cpp.o CMakeFiles/uORB.dir/uORBDeviceNode.cpp.o CMakeFiles/uORB.dir/uORBManager.cpp.o CMakeFiles/uORB.dir/uORBUtils.cpp.o
+/usr/bin/ranlib /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libuORB.a

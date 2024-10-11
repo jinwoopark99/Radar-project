@@ -1,0 +1,6 @@
+devel_space: /home/jinwoo/pixhawk_ws/devel
+install: false
+install_space: /home/jinwoo/pixhawk_ws/install
+profile: default
+source_space: /home/jinwoo/pixhawk_ws/src
+workspace: /home/jinwoo/pixhawk_ws
