@@ -1,0 +1,1 @@
+/home/jinwoo/pixhawk_ws/devel/.private/pos_communication/lib/pkgconfig/pos_communication.pc

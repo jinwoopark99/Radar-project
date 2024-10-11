@@ -1,0 +1,1 @@
+/home/jinwoo/pixhawk_ws/devel/.private/mavlink_sitl_gazebo/etc/catkin/profile.d/50_sitl_gazebo_setup.sh

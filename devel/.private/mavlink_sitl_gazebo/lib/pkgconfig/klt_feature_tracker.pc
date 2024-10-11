@@ -1,0 +1,8 @@
+prefix=/home/jinwoo/pixhawk_ws/devel/.private/mavlink_sitl_gazebo
+
+Name: klt_feature_tracker
+Description: Description of klt_feature_tracker
+Version: 0.0.0
+Cflags: -I/home/jinwoo/pixhawk_ws/src/mavlink_sitl_gazebo/external/OpticalFlow/external/klt_feature_tracker/include -I/home/jinwoo/pixhawk_ws/devel/.private/mavlink_sitl_gazebo/include
+Libs: -L${prefix}/lib -lklt_feature_tracker
+Requires: 
