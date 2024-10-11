@@ -1,0 +1,25 @@
+In file included from /usr/include/string.h:495,
+                 from /usr/include/tinyxml.h:42,
+                 from /home/jinwoo/pixhawk_ws/src/mavlink_sitl_gazebo/include/common.h:26,
+                 from /home/jinwoo/pixhawk_ws/src/mavlink_sitl_gazebo/src/gazebo_gimbal_controller_plugin.cpp:18:
+In function ‘void* memcpy(void*, const void*, size_t)’,
+    inlined from ‘void mav_array_memcpy(void*, const void*, size_t)’ at /home/jinwoo/pixhawk_ws/devel/include/mavlink/v2.0/common/../protocol.h:176:9,
+    inlined from ‘uint16_t mavlink_msg_gimbal_device_information_pack_chan(uint8_t, uint8_t, uint8_t, mavlink_message_t*, uint32_t, const char*, const char*, const char*, uint32_t, uint32_t, uint64_t, uint16_t, uint16_t, float, float, float, float, float, float)’ at /home/jinwoo/pixhawk_ws/devel/include/mavlink/v2.0/common/./mavlink_msg_gimbal_device_information.h:209:21,
+    inlined from ‘void gazebo::GimbalControllerPlugin::SendGimbalDeviceInformation()’ at /home/jinwoo/pixhawk_ws/src/mavlink_sitl_gazebo/src/gazebo_gimbal_controller_plugin.cpp:651:50:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:34:33: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ reading 32 bytes from a region of size 4 [-Wstringop-overflow=]
+   34 |   return __builtin___memcpy_chk (__dest, __src, __len, __bos0 (__dest));
+      |          ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function ‘void* memcpy(void*, const void*, size_t)’,
+    inlined from ‘void mav_array_memcpy(void*, const void*, size_t)’ at /home/jinwoo/pixhawk_ws/devel/include/mavlink/v2.0/common/../protocol.h:176:9,
+    inlined from ‘uint16_t mavlink_msg_gimbal_device_information_pack_chan(uint8_t, uint8_t, uint8_t, mavlink_message_t*, uint32_t, const char*, const char*, const char*, uint32_t, uint32_t, uint64_t, uint16_t, uint16_t, float, float, float, float, float, float)’ at /home/jinwoo/pixhawk_ws/devel/include/mavlink/v2.0/common/./mavlink_msg_gimbal_device_information.h:210:21,
+    inlined from ‘void gazebo::GimbalControllerPlugin::SendGimbalDeviceInformation()’ at /home/jinwoo/pixhawk_ws/src/mavlink_sitl_gazebo/src/gazebo_gimbal_controller_plugin.cpp:651:50:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:34:33: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ reading 32 bytes from a region of size 12 [-Wstringop-overflow=]
+   34 |   return __builtin___memcpy_chk (__dest, __src, __len, __bos0 (__dest));
+      |          ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function ‘void* memcpy(void*, const void*, size_t)’,
+    inlined from ‘void mav_array_memcpy(void*, const void*, size_t)’ at /home/jinwoo/pixhawk_ws/devel/include/mavlink/v2.0/common/../protocol.h:176:9,
+    inlined from ‘uint16_t mavlink_msg_gimbal_device_information_pack_chan(uint8_t, uint8_t, uint8_t, mavlink_message_t*, uint32_t, const char*, const char*, const char*, uint32_t, uint32_t, uint64_t, uint16_t, uint16_t, float, float, float, float, float, float)’ at /home/jinwoo/pixhawk_ws/devel/include/mavlink/v2.0/common/./mavlink_msg_gimbal_device_information.h:211:21,
+    inlined from ‘void gazebo::GimbalControllerPlugin::SendGimbalDeviceInformation()’ at /home/jinwoo/pixhawk_ws/src/mavlink_sitl_gazebo/src/gazebo_gimbal_controller_plugin.cpp:651:50:
+/usr/include/x86_64-linux-gnu/bits/string_fortified.h:34:33: warning: ‘void* __builtin_memcpy(void*, const void*, long unsigned int)’ reading 32 bytes from a region of size 1 [-Wstringop-overflow=]
+   34 |   return __builtin___memcpy_chk (__dest, __src, __len, __bos0 (__dest));
+      |          ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,59 @@
+[  0%] Built target sensor_msgs_generate_messages_py
+[  0%] Built target sensor_msgs_generate_messages_eus
+[  0%] Built target std_msgs_generate_messages_py
+[  0%] Built target std_msgs_generate_messages_eus
+[  0%] Built target sensor_msgs_generate_messages_nodejs
+[  0%] Built target std_msgs_generate_messages_lisp
+[ 15%] Built target models_gen
+[ 19%] Built target mav_msgs
+[ 19%] Built target sensor_msgs_generate_messages_lisp
+[ 22%] Built target std_msgs
+[ 29%] Built target nav_msgs
+[ 39%] Built target sensor_msgs
+[ 39%] [32m[1mLinking CXX shared library /home/jinwoo/pixhawk_ws/devel/.private/mavlink_sitl_gazebo/lib/libklt_feature_tracker.so[0m
+[ 41%] Built target physics_msgs
+[ 41%] Built target std_msgs_generate_messages_nodejs
+[ 41%] Built target sensor_msgs_generate_messages_cpp
+[ 41%] Built target std_msgs_generate_messages_cpp
+[ 41%] Built target _klt_feature_tracker_generate_messages_check_deps_TrackFeatures
+[ 47%] Built target gazebo_gps_plugin
+[ 47%] Built target gazebo_gst_camera_plugin
+[ 47%] Built target gazebo_sonar_plugin
+[ 47%] Built target gazebo_lidar_plugin
+[ 49%] Built target gazebo_opticalflow_mockup_plugin
+[ 51%] Built target gazebo_irlock_plugin
+[ 52%] Built target gazebo_multirotor_base_plugin
+[ 55%] Built target gazebo_groundtruth_plugin
+[ 55%] Built target gazebo_controller_interface
+[ 57%] Built target gazebo_camera_manager_plugin
+[ 59%] Built target gazebo_airspeed_plugin
+[ 60%] Built target gazebo_magnetometer_plugin
+[ 63%] Built target gazebo_user_camera_plugin
+[ 64%] Built target gazebo_catapult_plugin
+[ 66%] Built target gazebo_uuv_plugin
+[ 67%] Built target LiftDragPlugin
+[ 69%] Built target gazebo_parachute_plugin
+[ 70%] Built target gazebo_drop_plugin
+[ 72%] Built target gazebo_gimbal_controller_plugin
+[ 73%] Built target gazebo_vision_plugin
+[ 74%] Built target gazebo_imu_plugin
+[ 77%] Built target gazebo_video_stream_widget
+[ 78%] Built target klt_feature_tracker_generate_messages_eus
+[ 80%] Built target gazebo_motor_model
+[ 82%] Built target gazebo_mavlink_interface
+[ 84%] Built target gazebo_wind_plugin
+[ 86%] Built target gazebo_airship_dynamics_plugin
+[ 87%] Built target klt_feature_tracker
+[ 88%] Built target klt_feature_tracker_generate_messages_py
+[ 89%] Built target gazebo_barometer_plugin
+[ 90%] Built target gazebo_usv_dynamics_plugin
+[ 91%] Built target klt_feature_tracker_generate_messages_lisp
+[ 92%] Built target klt_feature_tracker_generate_messages_cpp
+[ 93%] Built target klt_feature_tracker_generate_messages_nodejs
+[ 93%] Built target klt_feature_tracker_generate_messages
+[ 94%] [32m[1mLinking CXX executable /home/jinwoo/pixhawk_ws/devel/.private/mavlink_sitl_gazebo/lib/klt_feature_tracker/feature_tracker_node[0m
+[ 95%] [32m[1mLinking CXX shared library libOpticalFlow.so[0m
+[ 98%] Built target OpticalFlow
+[100%] [32m[1mLinking CXX shared library /home/jinwoo/pixhawk_ws/devel/.private/mavlink_sitl_gazebo/lib/libgazebo_opticalflow_plugin.so[0m
+[100%] Built target feature_tracker_node
+[100%] Built target gazebo_opticalflow_plugin
