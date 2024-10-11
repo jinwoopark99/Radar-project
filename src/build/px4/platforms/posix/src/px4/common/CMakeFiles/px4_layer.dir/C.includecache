@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jinwoo/pixhawk_ws/src/PX4-Autopilot/platforms/posix/include/crc32.h
+sys/types.h
+-
+stdint.h
+-
+
+/home/jinwoo/pixhawk_ws/src/PX4-Autopilot/platforms/posix/src/px4/common/lib_crc32.c
+sys/types.h
+-
+stdint.h
+-
+crc32.h
+-
+

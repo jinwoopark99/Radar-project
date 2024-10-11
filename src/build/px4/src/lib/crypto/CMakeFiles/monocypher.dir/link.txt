@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libmonocypher.a  CMakeFiles/monocypher.dir/monocypher/src/monocypher.c.o CMakeFiles/monocypher.dir/monocypher/src/optional/monocypher-ed25519.c.o
+/usr/bin/ranlib /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libmonocypher.a

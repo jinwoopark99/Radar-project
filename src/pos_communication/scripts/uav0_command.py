@@ -15,6 +15,7 @@ uav3_alive = True
 uav1_checkpoint_arrive = False
 uav2_checkpoint_arrive = False
 uav3_checkpoint_arrive = False
+uav2_deviation = False
 mission_land = False
 
 
@@ -75,6 +76,10 @@ def uav3_checkpoint_arrive_callback(data):
     global uav3_checkpoint_arrive
     uav3_checkpoint_arrive = data.data
 
+def uav2_deviation_callback(data):
+    global uav2_deviation
+    uav2_deviation = data.data
+
 def quaternion_from_yaw(yaw):
     return tf.transformations.quaternion_from_euler(0, 0, yaw)
 
@@ -83,9 +88,9 @@ def mission_complete():
     mission_land = True
 
 def move_uav0():
-    global uav1_alive, uav2_alive, uav3_alive
+    global uav1_alive, uav2_alive, uav3_alive, uav2_deviation
     global uav1_checkpoint_arrive, uav2_checkpoint_arrive, uav3_checkpoint_arrive
-    global mission_land, current_yaw
+    global mission_land, current_yaw, current_position
     
     rospy.init_node('uav0_command', anonymous=True)
     rospy.Subscriber('/uav0/mavros/local_position/pose', PoseStamped, current_pose_callback)
@@ -96,6 +101,7 @@ def move_uav0():
     rospy.Subscriber('/checkpoint_arrive_1', Bool, uav1_checkpoint_arrive_callback)
     rospy.Subscriber('/checkpoint_arrive_2', Bool, uav2_checkpoint_arrive_callback)
     rospy.Subscriber('/checkpoint_arrive_3', Bool, uav3_checkpoint_arrive_callback)
+    rospy.Subscriber('/uav2_deviation', Bool, uav2_deviation_callback)
 
     pub = rospy.Publisher('/uav0/mavros/setpoint_position/local', PoseStamped, queue_size=10)
     pub_land = rospy.Publisher('/mission_land', Bool, queue_size=10)
@@ -135,6 +141,18 @@ def move_uav0():
             while (pos_flag_x or pos_flag_y or pos_flag_z or pos_flag_yaw) or (not (uav1_checkpoint_arrive and uav2_checkpoint_arrive and uav3_checkpoint_arrive)):
                 if (not (uav1_alive or uav2_alive or uav3_alive)) or mission_land:
                     break
+
+                if (uav2_deviation == True):
+                    #waiting_position = PoseStamped()
+                    #waiting_position = current_position
+                    pub.publish(current_position)
+                    print("Waiting for uav2")
+                    rate.sleep()
+                    if (mission_land == True):
+                        pub_land.publish(mission_land)
+                        break
+                    continue
+
                 pub.publish(target_position)
                 mission_start_pub.publish(True)
                 rate.sleep()

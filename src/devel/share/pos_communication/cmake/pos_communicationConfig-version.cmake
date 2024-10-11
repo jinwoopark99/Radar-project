@@ -1,0 +1,1 @@
+/home/jinwoo/pixhawk_ws/devel/.private/pos_communication/share/pos_communication/cmake/pos_communicationConfig-version.cmake

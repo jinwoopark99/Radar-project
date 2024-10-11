@@ -1,0 +1,1 @@
+{"version": 1, "metadataTypes": [{"type": 1, "uri": "mftp://etc/extras/parameters.json.xz", "fileCrc": 2605476374, "uriFallback": "https://px4-travis.s3.amazonaws.com/Firmware/v1.12.0/px4_sitl_default/parameters.json.xz"}]}

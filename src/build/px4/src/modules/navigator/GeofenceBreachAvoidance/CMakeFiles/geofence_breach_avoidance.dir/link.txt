@@ -1,0 +1,2 @@
+/usr/bin/ar qc /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libgeofence_breach_avoidance.a  CMakeFiles/geofence_breach_avoidance.dir/geofence_breach_avoidance.cpp.o
+/usr/bin/ranlib /home/jinwoo/pixhawk_ws/devel/.private/px4/lib/libgeofence_breach_avoidance.a

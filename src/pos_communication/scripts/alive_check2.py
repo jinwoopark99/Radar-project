@@ -10,7 +10,7 @@ check_heartbeat_3 = True
 last_msg_time_0 = None
 last_msg_time_1 = None
 last_msg_time_3 = None
-MAX_MISSED_DURATION = 0.8
+MAX_MISSED_DURATION = 0.2
 
 def uav0_time_check(data):
     global last_msg_time_0

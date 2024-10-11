@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -fpic -O2 -g -DNDEBUG  -shared -Wl,-soname,libgmock_main.so -o ../lib/libgmock_main.so CMakeFiles/gmock_main.dir/src/gmock_main.cc.o   -L/usr/lib/x86_64-linux-gnu/gazebo-11/plugins  -Wl,-rpath,/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/home/jinwoo/pixhawk_ws/build/mavlink_sitl_gazebo/gtest/lib ../lib/libgmock.so ../lib/libgtest.so -lpthread 

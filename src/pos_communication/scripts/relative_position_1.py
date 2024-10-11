@@ -88,6 +88,7 @@ def move_uav1():
     rate = rospy.Rate(100)
     
     while not rospy.is_shutdown():
+        """ 왜 없앴는지 기억이 안나는데 deviation 생겼을 때 uav2 들어오는거 기다리는 부분이었던 것 같음
         if (uav2_deviation == True):
             relative_position = current_position
             pub.publish(relative_position)
@@ -97,6 +98,7 @@ def move_uav1():
                 pub_land.publish(mission_land)
                 break
             continue
+        """
         if uav0_alive:
             yaw = tf.transformations.euler_from_quaternion([
                 setpoint_position.pose.orientation.x,

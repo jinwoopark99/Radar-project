@@ -124,12 +124,27 @@ def move_uav2():
     
     # main loop start
     while not rospy.is_shutdown():
+        """
+        # if there are no consensus algorithm for communication error
+        yaw = tf.transformations.euler_from_quaternion([
+                setpoint_position.pose.orientation.x,
+                setpoint_position.pose.orientation.y,
+                setpoint_position.pose.orientation.z,
+                setpoint_position.pose.orientation.w
+            ])[2]
+        x, y, z = 0, 1, 0
+        new_x, new_y, new_z = calculate_transformed_position(x, y, z, yaw)
+        relative_position = PoseStamped()
+        relative_position = set_relative_position(setpoint_position, new_x, new_y, new_z)
 
+        """
+        # consensus algorithm for communication error
+        # also considered position deviation with other vehicles
         if uav0_alive:
             distance = calculate_distance(current_position, uav0_position)
-            if distance > 1.2 or distance < 0.8:
+            if (distance > 1.2) or (distance < 0.8):
                 deviation_start_time = rospy.get_time()
-                if (deviation_start_time and non_deviation_time) and (deviation_start_time - non_deviation_time > 2):
+                if (deviation_start_time and non_deviation_time) and (deviation_start_time - non_deviation_time > 1):
                     deviation_flag = True
                     pub_deviation.publish(True)
                 if (deviation_start_time and non_deviation_time) and (deviation_start_time - non_deviation_time > 5):
@@ -140,6 +155,7 @@ def move_uav2():
             else:
                 non_deviation_time = rospy.get_time()
                 deviation_flag = False
+                pub_deviation.publish(False)
 
             yaw = tf.transformations.euler_from_quaternion([
                 setpoint_position.pose.orientation.x,
@@ -162,7 +178,7 @@ def move_uav2():
         
         elif uav1_alive:
             distance = calculate_distance(current_position, uav1_position)
-            if distance > 1.2 or distance < 0.8:
+            if (distance > 1.5) or (distance < 0.8):
                 deviation_start_time = rospy.get_time()
                 if (deviation_start_time and non_deviation_time) and (deviation_start_time - non_deviation_time > 1):
                     deviation_flag = True
@@ -177,6 +193,7 @@ def move_uav2():
             else:
                 non_deviation_time = rospy.get_time()
                 deviation_flag = False
+                pub_deviation.publish(False)
 
             yaw = tf.transformations.euler_from_quaternion([
                 recovery_position_1.pose.orientation.x,
@@ -199,7 +216,7 @@ def move_uav2():
 
         elif uav3_alive:
             distance = calculate_distance(current_position, uav3_position)
-            if distance > 1.2 or distance < 0.8:
+            if (distance > 1.2) or (distance < 0.8):
                 deviation_start_time = rospy.get_time()
                 if (deviation_start_time and non_deviation_time) and (deviation_start_time - non_deviation_time > 1):
                     deviation_flag = True
@@ -210,6 +227,7 @@ def move_uav2():
             else:
                 non_deviation_time = rospy.get_time()
                 deviation_flag = False
+                pub_deviation.publish(False)
             
             yaw = tf.transformations.euler_from_quaternion([
                 recovery_position_3.pose.orientation.x,
